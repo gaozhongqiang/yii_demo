@@ -44,14 +44,15 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'enablePrettyUrl' => true,//隐藏入口文件
+            'showScriptName' => false,//隐藏index.php
+            'suffix' => '',
             'rules' => [
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];
