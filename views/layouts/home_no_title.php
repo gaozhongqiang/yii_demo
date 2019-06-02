@@ -10,28 +10,28 @@
     <meta name="keywords" content="MediaCenter, Template, eCommerce">
     <meta name="robots" content="all">
 
-    <title><?php echo \Yii::$app->params['homeTitle']?></title>
+    <title><?php echo \Yii::$app->params['home']['title']?></title>
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['homeCssDir']?>bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>bootstrap.min.css">
 
     <!-- Customizable CSS -->
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['homeCssDir']?>main.css">
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['homeCssDir']?>red.css">
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['homeCssDir']?>owl.carousel.css">
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['homeCssDir']?>owl.transitions.css">
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['homeCssDir']?>animate.min.css">
+    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>main.css">
+    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>red.css">
+    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>owl.carousel.css">
+    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>owl.transitions.css">
+    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>animate.min.css">
 
 
     <!-- Icons/Glyphs -->
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['homeCssDir']?>font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>font-awesome.min.css">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?php echo \Yii::$app->params['homeImagesDir']?>favicon.ico">
+    <link rel="shortcut icon" href="<?php echo \Yii::$app->params['home']['images']?>favicon.ico">
 
     <!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
     <!--[if lt IE 9]>
-    <script src="<?php echo \Yii::$app->params['homeJsDir']?>html5shiv.js"></script>
-    <script src="<?php echo \Yii::$app->params['homeJsDir']?>respond.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>html5shiv.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>respond.min.js"></script>
     <![endif]-->
 
 
@@ -67,7 +67,7 @@
                 <!-- ============================================================= LOGO ============================================================= -->
                 <div class="logo">
                     <a href="index.html">
-                        <img alt="logo" src="<?php echo \Yii::$app->params['homeImagesDir']?>logo.PNG" width="233" height="54"/>
+                        <img alt="logo" src="<?php echo \Yii::$app->params['home']['images']?>logo.PNG" width="233" height="54"/>
                     </a>
                 </div><!-- /.logo -->
                 <!-- ============================================================= LOGO : END ============================================================= -->		</div><!-- /.logo-holder -->
@@ -120,7 +120,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <div class="basket-item-count">
                                     <span class="count">3</span>
-                                    <img src="<?php echo \Yii::$app->params['homeImagesDir']?>icon-cart.png" alt="" />
+                                    <img src="<?php echo \Yii::$app->params['home']['images']?>icon-cart.png" alt="" />
                                 </div>
 
                                 <div class="total-price-basket">
@@ -137,7 +137,7 @@
                                         <div class="row">
                                             <div class="col-xs-4 col-sm-4 no-margin text-center">
                                                 <div class="thumb">
-                                                    <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-01.jpg" />
+                                                    <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>products/product-small-01.jpg" />
                                                 </div>
                                             </div>
                                             <div class="col-xs-8 col-sm-8 no-margin">
@@ -154,7 +154,7 @@
                                         <div class="row">
                                             <div class="col-xs-4 col-sm-4 no-margin text-center">
                                                 <div class="thumb">
-                                                    <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-01.jpg" />
+                                                    <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>products/product-small-01.jpg" />
                                                 </div>
                                             </div>
                                             <div class="col-xs-8 col-sm-8 no-margin">
@@ -171,7 +171,7 @@
                                         <div class="row">
                                             <div class="col-xs-4 col-sm-4 no-margin text-center">
                                                 <div class="thumb">
-                                                    <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-01.jpg" />
+                                                    <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>products/product-small-01.jpg" />
                                                 </div>
                                             </div>
                                             <div class="col-xs-8 col-sm-8 no-margin">
@@ -229,7 +229,7 @@
 
                                         <div class="col-xs-12 col-sm-3 no-margin">
                                             <a href="#" class="thumb-holder">
-                                                <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-01.jpg" />
+                                                <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-small-01.jpg" />
                                             </a>
                                         </div>
                                     </div>
@@ -246,7 +246,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-3 no-margin">
                                             <a href="#" class="thumb-holder">
-                                                <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-02.jpg" />
+                                                <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-small-02.jpg" />
                                             </a>
                                         </div>
                                     </div>
@@ -264,7 +264,7 @@
 
                                         <div class="col-xs-12 col-sm-3 no-margin">
                                             <a href="#" class="thumb-holder">
-                                                <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-03.jpg" />
+                                                <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-small-03.jpg" />
                                             </a>
                                         </div>
                                     </div>
@@ -292,7 +292,7 @@
 
                                         <div class="col-xs-12 col-sm-3 no-margin">
                                             <a href="#" class="thumb-holder">
-                                                <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-04.jpg" />
+                                                <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-small-04.jpg" />
                                             </a>
                                         </div>
                                     </div>
@@ -310,7 +310,7 @@
 
                                         <div class="col-xs-12 col-sm-3 no-margin">
                                             <a href="#" class="thumb-holder">
-                                                <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-05.jpg" />
+                                                <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-small-05.jpg" />
                                             </a>
                                         </div>
                                     </div>
@@ -328,7 +328,7 @@
 
                                         <div class="col-xs-12 col-sm-3 no-margin">
                                             <a href="#" class="thumb-holder">
-                                                <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-06.jpg" />
+                                                <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-small-06.jpg" />
                                             </a>
                                         </div>
                                     </div>
@@ -356,7 +356,7 @@
 
                                         <div class="col-xs-12 col-sm-3 no-margin">
                                             <a href="#" class="thumb-holder">
-                                                <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-07.jpg" />
+                                                <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-small-07.jpg" />
                                             </a>
                                         </div>
                                     </div>
@@ -374,7 +374,7 @@
 
                                         <div class="col-xs-12 col-sm-3 no-margin">
                                             <a href="#" class="thumb-holder">
-                                                <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-08.jpg" />
+                                                <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-small-08.jpg" />
                                             </a>
                                         </div>
                                     </div>
@@ -392,7 +392,7 @@
 
                                         <div class="col-xs-12 col-sm-3 no-margin">
                                             <a href="#" class="thumb-holder">
-                                                <img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-small-09.jpg" />
+                                                <img alt="" src="<?php echo \Yii::$app->params['home']['images']?>blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-small-09.jpg" />
                                             </a>
                                         </div>
 
@@ -423,7 +423,7 @@
                     <!-- ============================================================= CONTACT INFO ============================================================= -->
                     <div class="contact-info">
                         <div class="footer-logo">
-                            <img alt="logo" src="<?php echo \Yii::$app->params['homeImagesDir']?>logo.PNG" width="233" height="54"/>
+                            <img alt="logo" src="<?php echo \Yii::$app->params['home']['images']?>logo.PNG" width="233" height="54"/>
                         </div><!-- /.footer-logo -->
 
                         <p class="regular-bold"> 请通过电话，电子邮件随时联系我们</p>
@@ -513,10 +513,10 @@
                 <div class="col-xs-12 col-sm-6 no-margin">
                     <div class="payment-methods ">
                         <ul>
-                            <li><img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>payments/payment-visa.png"></li>
-                            <li><img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>payments/payment-master.png"></li>
-                            <li><img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>payments/payment-paypal.png"></li>
-                            <li><img alt="" src="<?php echo \Yii::$app->params['homeImagesDir']?>payments/payment-skrill.png"></li>
+                            <li><img alt="" src="<?php echo \Yii::$app->params['home']['images']?>payments/payment-visa.png"></li>
+                            <li><img alt="" src="<?php echo \Yii::$app->params['home']['images']?>payments/payment-master.png"></li>
+                            <li><img alt="" src="<?php echo \Yii::$app->params['home']['images']?>payments/payment-paypal.png"></li>
+                            <li><img alt="" src="<?php echo \Yii::$app->params['home']['images']?>payments/payment-skrill.png"></li>
                         </ul>
                     </div><!-- /.payment-methods -->
                 </div>
@@ -527,21 +527,21 @@
     <!-- ============================================================= FOOTER : END ============================================================= -->	</div><!-- /.wrapper -->
 
 <!-- JavaScripts placed at the end of the document so the pages load faster -->
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>jquery-1.10.2.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>jquery-migrate-1.2.1.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>bootstrap.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>gmap3.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>bootstrap-hover-dropdown.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>owl.carousel.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>css_browser_selector.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>echo.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>jquery.easing-1.3.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>bootstrap-slider.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>jquery.raty.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>jquery.prettyPhoto.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>jquery.customSelect.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>wow.min.js"></script>
-<script src="<?php echo \Yii::$app->params['homeJsDir']?>scripts.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>jquery-1.10.2.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>jquery-migrate-1.2.1.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>bootstrap.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>gmap3.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>bootstrap-hover-dropdown.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>owl.carousel.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>css_browser_selector.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>echo.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>jquery.easing-1.3.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>bootstrap-slider.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>jquery.raty.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>jquery.prettyPhoto.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>jquery.customSelect.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>wow.min.js"></script>
+<script src="<?php echo \Yii::$app->params['home']['js']?>scripts.js"></script>
 
 </body>
 </html>

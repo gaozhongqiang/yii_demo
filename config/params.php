@@ -6,6 +6,7 @@ $baseConfig = [//原配置
     'senderName' => 'Example.com mailer',
 ];
 $homeConfig = include_once __DIR__.'/home.php';//首页信息配置
+$adminConfig =  include_once __DIR__.'/admin.php';//后台信息配置
 
-return array_merge($baseConfig,$homeConfig);
+return array_merge($baseConfig,array('home' => $homeConfig),array('admin' => $adminConfig));
 

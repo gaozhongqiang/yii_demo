@@ -7,19 +7,19 @@
                     <div id="owl-single-product">
                         <div class="single-product-gallery-item" id="slide1">
                             <a data-rel="prettyphoto" href="images/products/product-gallery-01.jpg">
-                                <img class="img-responsive" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-gallery-01.jpg" />
+                                <img class="img-responsive" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-gallery-01.jpg" />
                             </a>
                         </div><!-- /.single-product-gallery-item -->
 
                         <div class="single-product-gallery-item" id="slide2">
                             <a data-rel="prettyphoto" href="images/products/product-gallery-01.jpg">
-                                <img class="img-responsive" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-gallery-01.jpg" />
+                                <img class="img-responsive" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-gallery-01.jpg" />
                             </a>
                         </div><!-- /.single-product-gallery-item -->
 
                         <div class="single-product-gallery-item" id="slide3">
                             <a data-rel="prettyphoto" href="images/products/product-gallery-01.jpg">
-                                <img class="img-responsive" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-gallery-01.jpg" />
+                                <img class="img-responsive" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-gallery-01.jpg" />
                             </a>
                         </div><!-- /.single-product-gallery-item -->
                     </div><!-- /.single-product-slider -->
@@ -29,39 +29,39 @@
 
                         <div id="owl-single-product-thumbnails">
                             <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="0" href="#slide1">
-                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/gallery-thumb-01.jpg" />
+                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/gallery-thumb-01.jpg" />
                             </a>
 
                             <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
-                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/gallery-thumb-01.jpg" />
+                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/gallery-thumb-01.jpg" />
                             </a>
 
                             <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide3">
-                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/gallery-thumb-01.jpg" />
+                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/gallery-thumb-01.jpg" />
                             </a>
 
                             <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="0" href="#slide1">
-                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/gallery-thumb-01.jpg" />
+                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/gallery-thumb-01.jpg" />
                             </a>
 
                             <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
-                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/gallery-thumb-01.jpg" />
+                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/gallery-thumb-01.jpg" />
                             </a>
 
                             <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide3">
-                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/gallery-thumb-01.jpg" />
+                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/gallery-thumb-01.jpg" />
                             </a>
 
                             <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="0" href="#slide1">
-                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/gallery-thumb-01.jpg" />
+                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/gallery-thumb-01.jpg" />
                             </a>
 
                             <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
-                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/gallery-thumb-01.jpg" />
+                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/gallery-thumb-01.jpg" />
                             </a>
 
                             <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide3">
-                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/gallery-thumb-01.jpg" />
+                                <img width="67" alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/gallery-thumb-01.jpg" />
                             </a>
                         </div><!-- /#owl-single-product-thumbnails -->
 
@@ -361,7 +361,7 @@
                         <div class="product-item">
                             <div class="ribbon red"><span>sale</span></div>
                             <div class="image">
-                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-11.jpg" />
+                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-11.jpg" />
                             </div>
                             <div class="body">
                                 <div class="title">
@@ -384,7 +384,7 @@
                         <div class="product-item">
                             <div class="ribbon blue"><span>new!</span></div>
                             <div class="image">
-                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-12.jpg" />
+                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-12.jpg" />
                             </div>
                             <div class="body">
                                 <div class="title">
@@ -407,7 +407,7 @@
                         <div class="product-item">
 
                             <div class="image">
-                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-13.jpg" />
+                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-13.jpg" />
                             </div>
                             <div class="body">
                                 <div class="title">
@@ -430,7 +430,7 @@
                         <div class="product-item">
                             <div class="ribbon blue"><span>new!</span></div>
                             <div class="image">
-                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-14.jpg" />
+                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-14.jpg" />
                             </div>
                             <div class="body">
                                 <div class="title">
@@ -453,7 +453,7 @@
                         <div class="product-item">
                             <div class="ribbon green"><span>bestseller</span></div>
                             <div class="image">
-                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-15.jpg" />
+                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-15.jpg" />
                             </div>
                             <div class="body">
                                 <div class="title">
@@ -476,7 +476,7 @@
                         <div class="product-item">
 
                             <div class="image">
-                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-16.jpg" />
+                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-16.jpg" />
                             </div>
                             <div class="body">
                                 <div class="title">
@@ -499,7 +499,7 @@
                         <div class="product-item">
 
                             <div class="image">
-                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-13.jpg" />
+                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-13.jpg" />
                             </div>
                             <div class="body">
                                 <div class="title">
@@ -522,7 +522,7 @@
                         <div class="product-item">
                             <div class="ribbon blue"><span>new!</span></div>
                             <div class="image">
-                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['homeImagesDir']?>products/product-14.jpg" />
+                                <img alt="" src="../../web/home/images/blank.gif" data-echo="<?php echo \Yii::$app->params['home']['images']?>products/product-14.jpg" />
                             </div>
                             <div class="body">
                                 <div class="title">

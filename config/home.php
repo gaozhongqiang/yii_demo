@@ -7,8 +7,8 @@
  * 首页文件配置
  */
 return [
-    'homeTitle' => 'yii学习商城',//前台标题
-    'homeJsDir' =>  '/home/js/',//前台js文件存储目录
-    'homeCssDir' =>  '/home/css/',//前台js文件存储目录
-    'homeImagesDir' =>  '/home/images/',//前台js文件存储目录
+    'title' => 'yii学习商城',//前台标题
+    'js' =>  '/home/js/',//前台js文件存储目录
+    'css' =>  '/home/css/',//前台js文件存储目录
+    'images' =>  '/home/images/',//前台js文件存储目录
 ];

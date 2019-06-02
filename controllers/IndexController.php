@@ -11,6 +11,8 @@ use yii\web\Controller;
 class IndexController extends Controller{
     //s商城首页
     public function actionIndex(){
+        echo \yii\helpers\Url::to('index/index');
+        exit();
         $this->layout = 'home_title';
         return $this->render('index');
     }
