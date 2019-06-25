@@ -39,9 +39,9 @@ use yii\bootstrap\ActiveForm;
         <div class="span4 box">
             <div class="content-wrap">
                 <h6><?php echo \Yii::$app->params['admin']['title']?></h6>
-                <?php echo $form->field($model,'adminuser')->textInput(['class' => 'span12','placeholder'=>'管理员账号']);?>
-                <?php echo $form->field($model,'adminpass')->textInput(['class' => 'span12','placeholder'=>'管理员密码'])?>
-                <a href="<?php echo \yii\helpers\Url::to(['cart/seekpassword'])?>" class="forgot">忘记密码?</a>
+                <?php echo $form->field($model,'admin_user')->textInput(['class' => 'span12','placeholder'=>'管理员账号']);?>
+                <?php echo $form->field($model,'admin_pass')->textInput(['class' => 'span12','placeholder'=>'管理员密码'])?>
+                <a href="<?php echo \yii\helpers\Url::to(['public/seekpassword'])?>" class="forgot">忘记密码?</a>
                 <?php echo $form->field($model,'rememberMe')->checkbox([
                     'id' => 'remember-me',
                     'template' => '<div class="remember">{input}<label for="remember-me">记住我</label></div>'])?>

@@ -13,12 +13,12 @@ use Yii;
 class PublicController extends CommonController{
     //登陆
     public function actionLogin(){
+        $this->layout = false;
         $model = new Admin();
-        if(Yii::$app->request->isPost){
-            $post = Yii::$app->request->post();
-            if($model->login($post)){
-                $this->redirect('default/index');
-
+        if(IsPost){
+            $data = $this->method_post_value();
+            if($model->login($data)){
+                $this->redirect(['default/index']);
             }
 
         }
@@ -26,7 +26,14 @@ class PublicController extends CommonController{
     }
     //找回密码
     public function actionSeekpassword(){
+        $this->layout = false;
         $model = new Admin();
-        return $this->render('seekpassword');
+        if(IsPost){
+            $data = $this->method_post_value();
+            if($model->seekPass($data)){
+                Yii::$app->session->setFlash('info', '电子邮件已经发送成功，请查收');
+            }
+        }
+        return $this->render('seekpassword', ['model' => $model]);
     }
 }

@@ -11,4 +11,7 @@ return [
     'js' =>  '/admin/js/',//前台js文件存储目录
     'css' =>  '/admin/css/',//前台js文件存储目录
     'images' =>  '/admin/images/',//前台js文件存储目录
+    'pageSize' => [
+        'manager' => 2
+    ],
 ];
