@@ -13,9 +13,12 @@ class CommonController extends Controller{
     public function init()
     {
         $this->layout = 'common';
-        /*if(Yii::$app->session['admin']['isLogin']!=1){
-            $this->redirect('index');
-        }*/
+        if($this->get_admin_session('isLogin') != 1){
+            $this->redirect(['admin/default/index']);
+        }
+    }
+    public function set_flash_session($key,$value){
+        Yii::$app->session->setFlash($key,$value);
     }
     //获取后台的key
     public function get_admin_session($key = ''){
@@ -30,7 +33,7 @@ class CommonController extends Controller{
         if(empty($is_num)){
             return preg_match("/^\s+|\s+$/","",filter_input_value($data));
         }
-        return intval($key_name);
+        return intval($data);
     }
     //post获取值
     public function method_post_value($key_name = '',$is_num = 0){
@@ -54,6 +57,14 @@ class CommonController extends Controller{
             }
             return $data;
         }
-        return intval($key_name);
+        return intval($data);
+    }
+    //获取后台普通配置
+    public function get_config($field){
+        return Yii::$app->params['admin'][$field];
+    }
+    //获取分页
+    public function get_page_size($field){
+        return Yii::$app->params['admin']['pageSize'][$field];
     }
 }

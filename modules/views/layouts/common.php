@@ -177,7 +177,7 @@
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo yii\helpers\Url::to(["manage/managers"]);?>">管理员列表</a></li>
-                <li><a href="/index.php?r=admin%2Fmanage%2Freg">加入新管理员</a></li>
+                <li><a href="<?php echo yii\helpers\Url::to(['manage/add']);?>">加入新管理员</a></li>
             </ul>
         </li>
 
@@ -188,8 +188,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="/index.php?r=admin%2Fuser%2Fusers">用户列表</a></li>
-                <li><a href="/index.php?r=admin%2Fuser%2Freg">加入新用户</a></li>
+                <li><a href="<?php echo yii\helpers\Url::to(['user/users']);?>">用户列表</a></li>
+                <li><a href="<?php echo yii\helpers\Url::to(['user/reg']);?>">加入新用户</a></li>
             </ul>
         </li>
         <li>
@@ -199,8 +199,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="/index.php?r=admin%2Fcategory%2Flist">分类列表</a></li>
-                <li><a href="/index.php?r=admin%2Fcategory%2Fadd">加入分类</a></li>
+                <li><a href="<?php echo yii\helpers\Url::to(['category/list']);?>">分类列表</a></li>
+                <li><a href="<?php echo yii\helpers\Url::to(['category/add']);?>">加入分类</a></li>
             </ul>
         </li>
         <li>
@@ -210,8 +210,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="/index.php?r=admin%2Fproduct%2Flist">商品列表</a></li>
-                <li><a href="/index.php?r=admin%2Fproduct%2Fadd">添加商品</a></li>
+                <li><a href="<?php echo yii\helpers\Url::to(['product/list']);?>">商品列表</a></li>
+                <li><a href="<?php echo yii\helpers\Url::to(['product/list']);?>">添加商品</a></li>
             </ul>
         </li>
         <li>

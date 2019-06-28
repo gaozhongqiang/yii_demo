@@ -93,7 +93,7 @@ class Admin extends ActiveRecord
         $this->scenario = 'adminadd';
         if ($this->load($data) && $this->validate()) {
             $this->admin_pass = pwd_encrypt($this->admin_pass);
-            if ($this->save()) {
+            if ($this->save(false)) {
                 return true;
             }
             return false;

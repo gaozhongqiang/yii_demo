@@ -1,104 +1,55 @@
 <?php
 
 namespace app\models;
+use yii\db\ActiveRecord;
 
-class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
+class User extends ActiveRecord
 {
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
-
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
-
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentity($id)
+    public $repass;
+    public $login_time;
+    public $remember_me = true;
+    public static function tableName()
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return '{{%user}}';
+    }
+    //html中文显示
+    public function attributeLabels()
+    {
+        return [
+            'username' => '用户名',
+            'useremail' => '电子邮箱',
+            'userpass' => '密码',
+            'repass' => '确认密码',
+        ];
+    }
+    public function rules()
+    {
+        return [
+            ['username',    'required',  'message' => '用户名不能为空',    'on' => ['reg']],
+            ['username',    'unique',   'message' => '用户已经被注册',    'on' => ['reg']],
+            ['useremail',   'required',  'message' => '电子邮件不能为空',    'on' => ['reg']],
+            ['useremail',   'unique',   'message' => '电子邮件已被注册',    'on' => ['reg']],
+            ['useremail',   'email',   'message' => '电子邮件格式不正确',    'on' => ['reg']],
+            ['userpass',    'required',  'message' => '用户密码不能为空',    'on' => ['reg']],
+            ['repass',    'required',  'message' => '确认密码不能为空',    'on' => ['reg']],
+            ['repass',    'compare',    'compareAttribute' => 'userpass',  'message' => '两次密码输入不一致',    'on' => ['reg']],
+        ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
+    //关联表操作
+    public function getProfile(){
+        return $this->hasOne(Profile::className(),['userid' => 'userid']);
+    }
+    public function reg($data, $scenario = 'reg'){
+        $this->scenario = $scenario;
+        if($this->load($data) && $this->validate()){
+            $this->userpass = pwd_encrypt($this->userpass);
+            $this->createtime = time();
+            if($this->save(false)){
+                return true;
             }
+            return false;
         }
-
-        return null;
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getAuthKey()
-    {
-        return $this->authKey;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->authKey === $authKey;
-    }
-
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        return $this->password === $password;
+        return false;
     }
 }
