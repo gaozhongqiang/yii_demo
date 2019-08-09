@@ -41,10 +41,23 @@ class MemberController extends CommonController {
         }
         return $this->render('auth',['model' => $model]);
     }
-    public function actionQQlogin(){
+    public function actionQQLogin(){
         require_once("../vendor/qqlogin/qqConnectAPI.php");
         $qc = new \QC();
         $qc->qq_login();
     }
-
+    public function actionQQReg(){
+        $model = new User;
+        if(IsPost){
+            $post = Yii::$app->request->post();
+            $session = Yii::$app->session;
+            $post['User']['openid'] = $session['openid'];
+            if($model->reg($post,'qqreg')){
+                $session['loginName'] = $session['userinfo']['nickname'];
+                $session['isLogin'] = 1;
+                return $this->redirect(['index/index']);
+            }
+        }
+        return $this->render('qqreg',['model' => $model]);
+    }
 }

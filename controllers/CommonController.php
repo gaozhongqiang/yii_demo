@@ -57,4 +57,9 @@ class CommonController extends Controller{
         }
         return true;
     }
+    public function getUserId(){
+        $loginname = Yii::$app->session['loginname'];
+        return User::find()->where('username = :name or useremail = :email', [':name' => $loginname, ':email' => $loginname])->one()->userid;
+
+    }
 }
