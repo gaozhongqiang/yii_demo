@@ -17,25 +17,22 @@ class Category extends ActiveRecord{
     public function attributeLabels()
     {
         return [
-            'title' => '分类',
-            'parentid' => '父级id'
+            'title' => '分类名称',
+            'parentid' => '上级分类'
         ];
     }
     public function rules()
     {
         return [
-            ['parentid', 'validateParentid', 'message' => '上级分类不存在'],
+            ['parentid', 'required', 'message' => '上级分类不存在'],
             ['title', 'required', 'message' => '标题名称不能为空'],
             ['createtime', 'safe']
         ];
     }
     public function add($data){
-        if($this->load($data) && $this->validate()){
-            $this->createtime = time();
-            if($this->save()){
-                return true;
-            }
-            return false;
+        $data['Category']['createtime'] = time();
+        if($this->save()){
+            return true;
         }
         return false;
     }
@@ -101,6 +98,15 @@ class Category extends ActiveRecord{
             $options[$cate['cateid']] = $cate['title'];
         }
         return $options;
+    }
+    public function getMenu(){
+        $top = self::find()->where("parentid = :pid",[':pid' => 0])->asArray()->all();
+        $data = [];
+        foreach ($top as $key => $cate){
+            $cate['children'] = self::find()->where('parentid = :pid',[':pid',$cate['cateid']])->asArray()->all();
+            $data[$key] = $cate;
+        }
+        return $data;
     }
 
 }

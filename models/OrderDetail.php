@@ -13,4 +13,16 @@ class OrderDetail extends ActiveRecord{
     {
         return "{{%order_detail}}";
     }
+    public function rules()
+    {
+        return [
+            [['productid','productnum','price','orderid','createtime'],'required']
+        ];
+    }
+    public function add($data){
+        if($this->load($data) && $this->save()){
+            return true;
+        }
+        return false;
+    }
 }
