@@ -8,13 +8,13 @@
  */
 namespace app\modules\controllers;
 use yii\web\Controller;
-use yii;
+use Yii;
 class CommonController extends Controller{
     public function init()
     {
         $this->layout = 'common';
         if($this->get_admin_session('isLogin') != 1){
-            $this->redirect(['admin/default/index']);
+           return $this->redirect(['/admin/public/login']);
         }
     }
     public function set_flash_session($key,$value){

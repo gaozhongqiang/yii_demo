@@ -14,7 +14,7 @@ use yii\data\Pagination;
 class ProductController extends CommonController {
     //产品首页
     public function actionIndex(){
-        $this->layout = 'home_title';
+        $this->layout = 'layout1';
         $cid = Yii::$app->request->get('cateid');
         $where = "cateid = :cid and ison = '1'";
         $params = [':cid' => $cid];

@@ -14,7 +14,7 @@ use Yii;
 
 class CartController extends CommonController {
     public function actionIndex(){
-        $this->layout = 'home_no_title';
+        $this->layout = 'layout1';
         $this->isLogin();
         $userId = User::find()->where('username = :name',[':name' => Yii::$app->session['loginName']])->one()->userid;
         $cart = Cart::find()->where('userid = :uid',[':uid' => $userId])->asArray()->all();

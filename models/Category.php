@@ -99,7 +99,7 @@ class Category extends ActiveRecord{
         }
         return $options;
     }
-    public function getMenu(){
+    public static function getMenu(){
         $top = self::find()->where("parentid = :pid",[':pid' => 0])->asArray()->all();
         $data = [];
         foreach ($top as $key => $cate){

@@ -20,7 +20,7 @@ use yii\db\Exception;
 class OrderController extends CommonController {
     //订单首页
     public function actionIndex(){
-        $this->layout = 'home_no_title';
+        $this->layout = 'layout2';
         $this->isLogin();
         $loginName = Yii::$app->session['loginName'];
         $userId = User::find()->where('username = :name and useremail = :email',[':name' => $loginName, ':email'=>$loginName])->one()->userid;
@@ -28,6 +28,7 @@ class OrderController extends CommonController {
         return $this->render('index',['orders' => $orders]);
     }
     public function actionCheck(){
+        $this->layout = "layout1";
         $this->isLogin();
         $orderid = Yii::$app->request->get('orderid');
         $status = Order::find()->where('orderid = :oid',[':oid' => $orderid])->one()->status;

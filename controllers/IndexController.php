@@ -7,11 +7,10 @@
  * 前端首页
  */
 namespace app\controllers;
-use yii\web\Controller;
-class IndexController extends Controller{
+class IndexController extends CommonController {
     //s商城首页
     public function actionIndex(){
-        $this->layout = 'home_title';
+        $this->layout = 'layout1';
         return $this->render('index');
     }
 }

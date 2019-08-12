@@ -12,7 +12,7 @@ use Yii;
 class MemberController extends CommonController {
     //登陆及注册页
     public function actionAuth(){
-        $this->layout = 'home_title';
+        $this->layout = 'layout2';
         $model = new User;
         if(IsPost){
             $post = Yii::$app->request->post();
@@ -47,6 +47,7 @@ class MemberController extends CommonController {
         $qc->qq_login();
     }
     public function actionQQReg(){
+        $this->layout = "layout2";
         $model = new User;
         if(IsPost){
             $post = Yii::$app->request->post();
