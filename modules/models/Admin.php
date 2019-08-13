@@ -64,10 +64,11 @@ class Admin extends ActiveRecord
     {
         $this->scenario = "login";
         if ($this->load($data) && $this->validate()) {
-            //做点有意义的事
-            $lifetime = $this->rememberMe ? 24*3600 : 0;
+            if(!$_SESSION){
+                $lifetime = $this->rememberMe ? 24*3600 : 0;
+                session_set_cookie_params($lifetime);
+            }
             $session = Yii::$app->session;
-            //session_set_cookie_params($lifetime);
             $session['admin'] = [
                 'adminuser' => $this->adminuser,
                 'isLogin' => 1,

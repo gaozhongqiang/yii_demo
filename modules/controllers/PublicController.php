@@ -9,21 +9,24 @@
 namespace app\modules\controllers;
 use app\modules\models\Admin;
 use Yii;
-use yii\base\Controller;
+use yii\web\Controller;
 
 class PublicController extends Controller {
     //登陆
     public function actionLogin(){
         $this->layout = false;
+        if(Yii::$app->session['admin']['isLogin'] == 1){
+            return $this->redirect(['default/index']);
+        }
         $model = new Admin();
         if(IsPost){
             $data = Yii::$app->request->post();
             if($model->login($data)){
                 $this->redirect(['default/index']);
+                Yii::$app->end();
             }
 
         }
-        echo md5(123456);
         return $this->render('login',['model' => $model]);
     }
     public function actionLogout()
