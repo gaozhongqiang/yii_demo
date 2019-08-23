@@ -15,7 +15,7 @@ use yii\helpers\Html;
 
                         <div class="social-auth-buttons">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-6" id="login_qq">
                                     <button class="btn-block btn-lg btn btn-facebook"><i class="fa fa-qq"></i> 使用QQ账号登录</button>
                                 </div>
                                 <div class="col-md-6">
@@ -24,8 +24,8 @@ use yii\helpers\Html;
                             </div>
                         </div>
                         <?php
-                        $form = \yii\widgets\ActiveForm::begin([
-                                'fileConfig' => [
+                        $form = ActiveForm::begin([
+                                'fieldConfig' => [
                                         'template' => '<div class="field-row">{label}{input}</div>{error}'
                                 ],
                                 'options' => [
@@ -70,7 +70,7 @@ use yii\helpers\Html;
                             echo Yii::$app->session->getFlash('info');
                         }
                         $form = ActiveForm::begin([
-                                'fileConfig' => [
+                                'fieldConfig' => [
                                         'template' => '<div class="field-row">{label}{input}</div>{error}'
                                 ],
                                 'options' => [

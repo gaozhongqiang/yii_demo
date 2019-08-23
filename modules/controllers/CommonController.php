@@ -31,7 +31,7 @@ class CommonController extends Controller{
         }
         $data = Yii::$app->request->get($key_name);
         if(empty($is_num)){
-            return preg_match("/^\s+|\s+$/","",filter_input_value($data));
+            return preg_replace("/^\s+|\s+$/","",filter_input_value($data));
         }
         return intval($data);
     }
@@ -44,11 +44,11 @@ class CommonController extends Controller{
         if(empty($is_num)){
             if(is_array($data)){
                 foreach ($data as $key => $value){
-                    $data[$key] =  preg_match("/^\s+|\s+$/","",filter_input_value($value));
+                    $data[$key] =  preg_replace("/^\s+|\s+$/","",filter_input_value($value));
                 }
                 return $data;
             }else{
-                return preg_match("/^\s+|\s+$/","",filter_input_value($data));
+                return preg_replace("/^\s+|\s+$/","",filter_input_value($data));
             }
         }
         if(is_array($data)){

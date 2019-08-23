@@ -36,15 +36,15 @@
                     <tbody>
                     <?php foreach ($managers as $key => $value){?>
                     <tr>
-                        <td><?php echo $value['id']?></td>
-                        <td><?php echo $value['admin_user']?></td>
-                        <td><?php echo $value['admin_email']?></td>
-                        <td><?php echo $value['login_time']?></td>
-                        <td><?php echo $value['login_ip']?></td>
-                        <td><?php echo $value['create_time']?></td>
+                        <td><?php echo $value['adminid']?></td>
+                        <td><?php echo $value['adminuser']?></td>
+                        <td><?php echo $value['adminemail']?></td>
+                        <td><?php echo $value['logintime']?></td>
+                        <td><?php echo $value['loginip']?></td>
+                        <td><?php echo $value['createtime']?></td>
                         <td class="align-right">
-                            <a href="<?php echo yii\helpers\Url::to(['manage/edit','id' => $value['id']])?>">修改</a>
-                            <a href="<?php echo yii\helpers\Url::to(['manage/del','id' => $value['id']])?>">删除</a>
+                            <!--<a href="<?php /*echo yii\helpers\Url::to(['manage/edit','id' => $value['adminid']])*/?>">修改</a>-->
+                            <a href="<?php echo yii\helpers\Url::to(['manage/del','id' => $value['adminid']])?>">删除</a>
                         </td>
                     </tr>
                     <?php }?>

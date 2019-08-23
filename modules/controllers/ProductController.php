@@ -19,7 +19,7 @@ class ProductController extends CommonController{
     public $istui = ['不推荐', '推荐'];
     //列表
     public function actionList(){
-        $model = Product::find()->where(Product::tableName().'.del = 0')->joinWith('category');
+        $model = Product::find();
         $pager = new Pagination(['totalCount' => $model->count(),'pageSize' => $this->get_page_size('product')]);
         $data = $model->offset($pager->offset)->limit($pager->limit)->asArray()->all();
         $data = array_map(function ($value){

@@ -33,10 +33,10 @@ use yii\helpers\Html;
                                                        </div>'
                             ]
                         ]);
-                        echo $form->field($model, 'admin_user')->textInput(['class' => 'span9']);
-                        echo $form->field($model, 'admin_email')->textInput(['class' => 'span9']);
-                        echo $form->field($model, 'admin_pass')->textInput(['class' => 'span9']);
-                        echo $form->field($model, 'admin_repass')->textInput(['class' => 'span9']);
+                        echo $form->field($model, 'adminuser')->textInput(['class' => 'span9']);
+                        echo $form->field($model, 'adminemail')->textInput(['class' => 'span9']);
+                        echo $form->field($model, 'adminpass')->textInput(['class' => 'span9']);
+                        echo $form->field($model, 'repass')->textInput(['class' => 'span9']);
                         ?>
 
                         <div class="span11 field-box actions">

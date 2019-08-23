@@ -18,9 +18,9 @@ class User extends ActiveRecord
     {
         return [
             ['loginname', 'required', 'message' => '登录用户名不能为空', 'on' => ['login']],
-            ['openid', 'required', 'message' => 'openid不能为空', 'on' => ['reg', 'regbymail', 'qqreg']],
+            ['openid', 'required', 'message' => 'openid不能为空', 'on' => [/*'reg',*/ 'regbymail', 'qqreg']],
             ['username', 'required', 'message' => '用户名不能为空', 'on' => ['reg', 'regbymail', 'qqreg']],
-            ['openid', 'unique', 'message' => 'openid已经被注册', 'on' => ['reg', 'regbymail', 'qqreg']],
+            ['openid', 'unique', 'message' => 'openid已经被注册', 'on' => [/*'reg',*/ 'regbymail', 'qqreg']],
             ['username', 'unique', 'message' => '用户已经被注册', 'on' => ['reg', 'regbymail', 'qqreg']],
             ['useremail', 'required', 'message' => '电子邮件不能为空', 'on' => ['reg', 'regbymail']],
             ['useremail', 'email', 'message' => '电子邮件格式不正确', 'on' => ['reg', 'regbymail']],

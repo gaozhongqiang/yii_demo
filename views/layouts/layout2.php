@@ -10,30 +10,29 @@
 	    <meta name="keywords" content="">
 	    <meta name="robots" content="all">
 
-	    <title>商品分类 - 慕课商城</title>
+        <title><?php echo \Yii::$app->params['home']['title']?></title>
+        <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>bootstrap.min.css">
 
-	    <!-- Bootstrap Core CSS -->
-	    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-	    
-	    <!-- Customizable CSS -->
-	    <link rel="stylesheet" href="/assets/css/main.css">
-	    <link rel="stylesheet" href="/assets/css/red.css">
-	    <link rel="stylesheet" href="/assets/css/owl.carousel.css">
-		<link rel="stylesheet" href="/assets/css/owl.transitions.css">
-		<link rel="stylesheet" href="/assets/css/animate.min.css">
+        <!-- Customizable CSS -->
+        <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>main.css">
+        <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>red.css">
+        <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>owl.carousel.css">
+        <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>owl.transitions.css">
+        <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>animate.min.css">
 
-		
-		<!-- Icons/Glyphs -->
-		<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
-		
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="/assets/images/favicon.ico">
 
-		<!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
-		<!--[if lt IE 9]>
-			<script src="/assets/js/html5shiv.js"></script>
-			<script src="/assets/js/respond.min.js"></script>
-		<![endif]-->
+        <!-- Icons/Glyphs -->
+        <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>font-awesome.min.css">
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="<?php echo \Yii::$app->params['home']['images']?>favicon.ico">
+
+        <!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
+        <!--[if lt IE 9]>
+        <script src="<?php echo \Yii::$app->params['home']['js']?>html5shiv.js"></script>
+        <script src="<?php echo \Yii::$app->params['home']['js']?>respond.min.js"></script>
+        <![endif]-->
  
 	</head>
 <body>
@@ -541,21 +540,21 @@
 <!-- ============================================================= FOOTER : END ============================================================= -->	</div><!-- /.wrapper -->
 
 	<!-- JavaScripts placed at the end of the document so the pages load faster -->
-	<script src="/assets/js/jquery-1.10.2.min.js"></script>
-	<script src="/assets/js/jquery-migrate-1.2.1.js"></script>
-	<script src="/assets/js/bootstrap.min.js"></script>
-	<script src="/assets/js/gmap3.min.js"></script>
-	<script src="/assets/js/bootstrap-hover-dropdown.min.js"></script>
-	<script src="/assets/js/owl.carousel.min.js"></script>
-	<script src="/assets/js/css_browser_selector.min.js"></script>
-	<script src="/assets/js/echo.min.js"></script>
-	<script src="/assets/js/jquery.easing-1.3.min.js"></script>
-	<script src="/assets/js/bootstrap-slider.min.js"></script>
-    <script src="/assets/js/jquery.raty.min.js"></script>
-    <script src="/assets/js/jquery.prettyPhoto.min.js"></script>
-    <script src="/assets/js/jquery.customSelect.min.js"></script>
-    <script src="/assets/js/wow.min.js"></script>
-	<script src="/assets/js/scripts.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>jquery-1.10.2.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>jquery-migrate-1.2.1.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>bootstrap.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>gmap3.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>bootstrap-hover-dropdown.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>owl.carousel.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>css_browser_selector.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>echo.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>jquery.easing-1.3.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>bootstrap-slider.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>jquery.raty.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>jquery.prettyPhoto.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>jquery.customSelect.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>wow.min.js"></script>
+    <script src="<?php echo \Yii::$app->params['home']['js']?>scripts.js"></script>
 
     <script>
         $("#createlink").click(function(){

@@ -8,6 +8,7 @@
  */
 namespace app\models;
 use yii\db\ActiveRecord;
+use app\models\Category;
 
 class Product extends ActiveRecord{
     const AK = 'toix9okVaTB0uz6oxPe_vTnW-psg62jGuQOb01uZ';
@@ -47,5 +48,8 @@ class Product extends ActiveRecord{
             [['issale','ishot', 'pics', 'istui'],'safe'],
             [['cover'], 'required'],
         ];
+    }
+    public function getProfile(){
+        return $this->hasOne(Category::className(),['cateid' => 'cateid']);
     }
 }

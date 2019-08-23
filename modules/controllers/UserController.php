@@ -16,7 +16,7 @@ use yii\db\Exception;
 class UserController extends CommonController{
     //列表
     public function actionUsers(){
-        $model = User::find()->where(User::tableName().'.del = 0')->joinWith('profile');
+        $model = User::find()->joinWith('profile');
         $count = $model->count();
         $pager = new Pagination(['totalCount' => $count,'pageSize' => $this->get_page_size('user')]);
         $users = $model->offset($pager->offset)->limit($pager->limit)->asArray()->all();

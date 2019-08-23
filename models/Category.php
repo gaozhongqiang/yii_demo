@@ -31,7 +31,7 @@ class Category extends ActiveRecord{
     }
     public function add($data){
         $data['Category']['createtime'] = time();
-        if($this->save()){
+        if($this->load($data) && $this->save()){
             return true;
         }
         return false;
@@ -39,7 +39,7 @@ class Category extends ActiveRecord{
     //判断父级id是否存在
     public function validateParentid(){
         if(!empty($this->parentid)){
-            $data = self::find()->where('cateid = :id and del = 0',[':id'=>$this->parentid])->one();
+            $data = self::find()->where('cateid = :id',[':id'=>$this->parentid])->one();
             if(empty($data)){
                 $this->addError('parentid','父级id不存在');
             }
@@ -53,7 +53,7 @@ class Category extends ActiveRecord{
     }
     //获取全部数据
     public function getData(){
-        return self::find()->where('del = 0')->asArray()->all();
+        return self::find()->asArray()->all();
     }
     //父级数据遍历
     public function getTree($data,$pid = 0){

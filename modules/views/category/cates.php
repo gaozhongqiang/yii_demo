@@ -53,13 +53,13 @@
                     </tbody>
                 </table>
             </div>
-            <div class="pagination pull-right">
-                <?php echo yii\widgets\LinkPager::widget([
+            <!--<div class="pagination pull-right">
+                <?php /*echo yii\widgets\LinkPager::widget([
                         'pagination' => $pager,
                         'prevPageLabel' => '&#8249;',
                         'nextPageLabel' => '&#8250;',
-                        ]); ?>
-            </div>
+                        ]); */?>
+            </div>-->
             <!-- end users table -->
         </div>
     </div>

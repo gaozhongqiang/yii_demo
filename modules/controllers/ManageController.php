@@ -14,15 +14,15 @@ use yii\data\Pagination;
 class ManageController extends CommonController{
     //列表
     public function actionManagers(){
-        $model = Admin::find()->where('del=0');
+        $model = Admin::find();
         $count = $model->count();
         $pageSize = Yii::$app->params['admin']['pageSize']['manager'];
         $pager = new Pagination(['totalCount' => $count, 'PageSize' => $pageSize]);
         $managers = $model->offset($pager->offset)->limit($pager->limit)->asArray()->all();
         $managers = array_map(function ($value){
-            $value['login_time'] = date_default('Y-m-d H:i:s',$value['login_time']);
-            $value['create_time'] = date_default('Y-m-d H:i:s',$value['create_time']);
-            $value['login_ip'] = ip2long($value['login_ip']);
+            $value['login_time'] = date_default('Y-m-d H:i:s',$value['logintime']);
+            $value['create_time'] = date_default('Y-m-d H:i:s',$value['createtime']);
+            $value['login_ip'] = ip2long($value['loginip']);
             return $value;
         },$managers);
 
@@ -33,14 +33,14 @@ class ManageController extends CommonController{
         $model = new Admin();
         if(IsPost){
             $post = $this->method_post_value();
-            if($model->add($post)){
+            if($model->reg($post)){
                 Yii::$app->session->setFlash('info','添加成功');
             }else{
                 Yii::$app->session->setFlash('info','添加失败');
             }
         }
-        $model->admin_pass = '';
-        $model->admin_repass = '';
+        $model->adminpass = '';
+        $model->repass = '';
         return $this->render('add',['model' => $model]);
     }
     //修改
@@ -52,7 +52,7 @@ class ManageController extends CommonController{
         if(empty($id)){
             $this->redirect(['manage/managers']);
         }
-        $admin_data = Admin::find()->where('del = 0 AND id = :id',[':id' => $id])->asArray()->one();
+        $admin_data = Admin::find()->where('id = :id',[':id' => $id])->asArray()->one();
         if(empty($admin_data)){
             $this->redirect(['manage/managers']);
         }
@@ -78,7 +78,7 @@ class ManageController extends CommonController{
             $this->redirect(['manage/managers']);
         }
         $model = new Admin();
-        if($model->updateAll(['del' => 1],'id = :id',[':id' => $id])){
+        if($model->deleteAll('adminid = :id',[':id' => $id])){
             Yii::$app->session->setFlash('info','删除成功');
         }else{
             Yii::$app->session->setFlash('info','删除失败');

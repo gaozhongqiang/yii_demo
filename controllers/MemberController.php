@@ -41,7 +41,7 @@ class MemberController extends CommonController {
         }
         return $this->render('auth',['model' => $model]);
     }
-    public function actionQQLogin(){
+    public function actionQqlogin(){
         require_once("../vendor/qqlogin/qqConnectAPI.php");
         $qc = new \QC();
         $qc->qq_login();

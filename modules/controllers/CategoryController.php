@@ -24,8 +24,6 @@ class CategoryController extends CommonController{
             $data = $this->method_post_value();
             if($model->add($data)){
                 $this->set_flash_session('info','添加成功');
-            }else{
-                $this->set_flash_session('info','添加失败');
             }
 
         }
@@ -38,19 +36,21 @@ class CategoryController extends CommonController{
         if(empty($cateid)){
             $cateid = $this->method_post_value('cateid',1);
         }
-        $model = Category::find()->where('cateid = :id and del = 0',[':id' => $cateid])->one();
+
+        $data = Category::find()->where('cateid = :id',[':id' => $cateid])->one();
         if(empty($data)){
             $this->set_flash_session('info','数据不存在');
             $this->redirect(['category/list']);
         }
         if(IsPost){
-            $data = $this->method_post_value();
-            if($model->load($data) && $model->save()){
+            $model = new Category();
+            $data1 = $this->method_post_value();
+            if($model->load($data1) && $model->save()){
                 $this->set_flash_session('info','修改成功');
             }
         }
-        $list = $model->getOptions();
-        return $this->render('add', ['model' => $model, 'list' => $list]);
+        $list = $data->getOptions();
+        return $this->render('add', ['model' => $data, 'list' => $list]);
     }
     //删除
     public function actionDel(){
@@ -59,15 +59,15 @@ class CategoryController extends CommonController{
             if(empty($cateid)){
                 throw new \Exception('数据为空，无法删除');
             }
-            $data = Category::find()->where('cateid = :id and del = 0', [':id' => $cateid])->one();
+            $data = Category::find()->where('cateid = :id ', [':id' => $cateid])->one();
             if(empty($data)){
                 throw new \Exception('数据不存在，无法删除');
             }
-            $data = Category::find()->where('parentid = :id and del = 0', [':id' => $cateid])->one();
+            $data = Category::find()->where('parentid = :id ', [':id' => $cateid])->one();
             if(!empty($data)){
                 throw new \Exception('存在子类，无法删除');
             }
-            if(!Category::updateAll(['del'=>1],'cateid = :id', [':id' => $cateid])){
+            if(!Category::deleteAll('cateid = :id', [':id' => $cateid])){
                 throw new \Exception('删除失败');
             }
             $this->set_flash_session('info','删除成功');
