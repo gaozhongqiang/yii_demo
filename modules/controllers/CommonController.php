@@ -14,7 +14,7 @@ class CommonController extends Controller{
     {
         $this->layout = 'common';
         if($this->get_admin_session('isLogin') != 1){
-            $this->redirect(['admin/default/index']);
+            $this->redirect(['/default/index']);
         }
     }
     public function set_flash_session($key,$value){

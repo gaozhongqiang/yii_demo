@@ -1,43 +1,36 @@
+<?php
+use app\assets\AppAsset;
+AppAsset::register($this);
+?>
+<?php
+$this->beginPage();
+?>
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="<?php Yii::$app->language;?>">
 <head>
     <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
-    <meta name="robots" content="all">
+    <meta charset="<?php Yii::$app->charset;?>">
+    <?php
+    $this->registerMetaTag(['http-equiv' => 'Content-Type','content' => 'text/html; charset=UTF-8']);
+    $this->registerMetaTag(['name' => 'viewport','content' => 'width=device-width, initial-scale=1.0, user-scalable=no']);
+    $this->registerMetaTag(['name' => 'description','content' => '']);
+    $this->registerMetaTag(['name' => 'author','content' => '']);
+    $this->registerMetaTag(['name' => 'keywords','content' => 'MediaCenter, Template, eCommerce']);
+    $this->registerMetaTag(['name' => 'robots','content' => 'all']);
+    ?>
 
-    <title><?php echo \Yii::$app->params['home']['title']?></title>
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>bootstrap.min.css">
-
-    <!-- Customizable CSS -->
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>main.css">
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>red.css">
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>owl.carousel.css">
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>owl.transitions.css">
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>animate.min.css">
-
-
-    <!-- Icons/Glyphs -->
-    <link rel="stylesheet" href="<?php echo \Yii::$app->params['home']['css']?>font-awesome.min.css">
-
+    <title><?php echo $this->title;?></title>
+    <?php $this->registerCsrfMetaTags() ?>
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?php echo \Yii::$app->params['home']['images']?>favicon.ico">
-
-    <!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
-    <!--[if lt IE 9]>
-    <script src="<?php echo \Yii::$app->params['home']['js']?>html5shiv.js"></script>
-    <script src="<?php echo \Yii::$app->params['home']['js']?>respond.min.js"></script>
-    <![endif]-->
+    <?php
+    $this->head();
+    ?>
 
 
 </head>
 <body>
-
+<?php $this->beginBody();?>
 <div class="wrapper">
     <!-- ============================================================= TOP NAVIGATION ============================================================= -->
     <nav class="top-bar animate-dropdown">
@@ -525,24 +518,8 @@
 
     </footer><!-- /#footer -->
     <!-- ============================================================= FOOTER : END ============================================================= -->	</div><!-- /.wrapper -->
-
-<!-- JavaScripts placed at the end of the document so the pages load faster -->
-<script src="<?php echo \Yii::$app->params['home']['js']?>jquery-1.10.2.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>jquery-migrate-1.2.1.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>bootstrap.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>gmap3.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>bootstrap-hover-dropdown.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>owl.carousel.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>css_browser_selector.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>echo.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>jquery.easing-1.3.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>bootstrap-slider.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>jquery.raty.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>jquery.prettyPhoto.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>jquery.customSelect.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>wow.min.js"></script>
-<script src="<?php echo \Yii::$app->params['home']['js']?>scripts.js"></script>
+<?php $this->endBody();?>
 
 </body>
 </html>
-    
+<?php echo $this->endPage()?>
