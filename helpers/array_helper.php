@@ -144,3 +144,19 @@ if(!function_exists('array_set_small_value_to_key')){
         }
     }
 }
+/*****************************************************************************************************************************************
+将一个数组转换成sql的IN形式，这个数组可以是一个一维数组也可以是一个二维数组，对于一维数组keyname是空的
+$arr				要转换成sql in形式的
+$default		表示如果$arr为空的时候IN里面内容的默认值，事实上这个默认值是需要的不然就会出现如mid IN ('')这种情况
+$is_linear	表示是一维数组还是二维数组，对于一维数组中keyname是无效的，而keyname是对于二维数组才有效
+$keyname		是对于二维数组，对于一维数组是无效的
+ ******************************************************************************************************************************************/
+if(!function_exists('array_to_sql_str')){
+    function array_to_sql_str($arr,$default=-1,$is_linear=1,$keyname=""){
+        if(empty($arr)){
+            return "'{$default}'";
+        }
+        $line_arr=$is_linear==2 && !empty($keyname) ? array_column_default($arr,$keyname) : $arr;
+        return "'".implode("','",$line_arr)."'";
+    }
+}

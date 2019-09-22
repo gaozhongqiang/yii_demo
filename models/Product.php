@@ -8,8 +8,13 @@
  */
 namespace app\models;
 use yii\db\ActiveRecord;
+use app\models\Category;
 
 class Product extends ActiveRecord{
+    const AK = 'toix9okVaTB0uz6oxPe_vTnW-psg62jGuQOb01uZ';
+    const SK = '9BbqEK8nmW-LlLWnmt4Aqe3CWWKN-IiSJMDlY0a3';
+    const DOMAIN = 'o7zgluxwg.bkt.clouddn.com';
+    const BUCKET = 'imooc-shop';
     public static function tableName()
     {
         return "{{%product}}";
@@ -44,8 +49,7 @@ class Product extends ActiveRecord{
             [['cover'], 'required'],
         ];
     }
-    //关联商品类别
-    public function getCategory(){
+    public function getProfile(){
         return $this->hasOne(Category::className(),['cateid' => 'cateid']);
     }
 }

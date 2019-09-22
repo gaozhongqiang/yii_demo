@@ -1,8 +1,15 @@
 <?php
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+$this->title = '添加新用户';
+$this->params['breadcrumbs'] = [
+    [
+        'label' => '添加新用户',
+        'url' => ['/admin/user/reg']
+    ]
+];
 ?>
-<div class="content">
+
     <div class="container-fluid">
         <div id="pad-wrapper" class="new-user">
             <div class="row-fluid header">
@@ -50,4 +57,3 @@ use yii\helpers\Html;
             </div>
         </div>
     </div>
-</div>

@@ -1,6 +1,13 @@
 <?php
     use yii\bootstrap\ActiveForm;
     use yii\helpers\Html;
+$this->title = '添加商品';
+$this->params['breadcrumbs'] = [
+    [
+        'label' => '添加商品',
+        'url' => ['/admin/product/add']
+    ]
+];
 ?>
 <style>
     .span8 div{
@@ -15,7 +22,7 @@
     }
 </style>
     <!-- main container -->
-    <div class="content">
+
         <div class="container-fluid">
             <div id="pad-wrapper" class="new-user">
                 <div class="row-fluid header">
@@ -88,5 +95,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
     <!-- end main container -->

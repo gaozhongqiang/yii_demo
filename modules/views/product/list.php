@@ -1,5 +1,5 @@
  <!-- main container -->
-    <div class="content">
+ <?php $this->title = '商品列表';?>
         
         <div class="container-fluid">
             <div id="pad-wrapper" class="users-list">
@@ -99,5 +99,5 @@
                 <!-- end users table -->
             </div>
         </div>
-    </div>
+
     <!-- end main container -->

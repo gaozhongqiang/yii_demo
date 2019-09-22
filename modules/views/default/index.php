@@ -1,8 +1,8 @@
-
+<?php $this->title = '后台首页';?>
 
 
 <!-- main container -->
-<div class="content">
+
 
     <div class="container-fluid">
 
@@ -104,7 +104,7 @@
                             <td>
                                 <input type="checkbox" />
                                 <div class="img">
-                                    <img src="assets/admin/img/table-img.png" />
+                                    <img src="<?php echo \Yii::$app->params['admin']['images']?>table-img.png" />
                                 </div>
                                 <a href="#">There are many variations </a>
                             </td>
@@ -125,7 +125,7 @@
                             <td>
                                 <input type="checkbox" />
                                 <div class="img">
-                                    <img src="assets/admin/img/table-img.png" />
+                                    <img src="<?php echo \Yii::$app->params['admin']['images']?>table-img.png" />
                                 </div>
                                 <a href="#">Internet tend</a>
                             </td>
@@ -145,7 +145,7 @@
                             <td>
                                 <input type="checkbox" />
                                 <div class="img">
-                                    <img src="assets/admin/img/table-img.png" />
+                                    <img src="<?php echo \Yii::$app->params['admin']['images']?>table-img.png" />
                                 </div>
                                 <a href="#">Many desktop publishing </a>
                             </td>
@@ -165,7 +165,7 @@
                             <td>
                                 <input type="checkbox" />
                                 <div class="img">
-                                    <img src="assets/admin/img/table-img.png" />
+                                    <img src="<?php echo \Yii::$app->params['admin']['images']?>table-img.png" />
                                 </div>
                                 <a href="#">Generate Lorem </a>
                             </td>
@@ -186,7 +186,7 @@
                             <td>
                                 <input type="checkbox" />
                                 <div class="img">
-                                    <img src="assets/admin/img/table-img.png" />
+                                    <img src="<?php echo \Yii::$app->params['admin']['images']?>table-img.png" />
                                 </div>
                                 <a href="#">Internet tend</a>
                             </td>
@@ -219,7 +219,123 @@
             <!-- end table sample -->
         </div>
     </div>
-</div>
+
+<?php
+$js = <<<JS
+$(function () {
+
+        // jQuery Knobs
+        $(".knob").knob();
+
+
+
+        // jQuery UI Sliders
+        $(".slider-sample1").slider({
+            value: 100,
+            min: 1,
+            max: 500
+        });
+        $(".slider-sample2").slider({
+            range: "min",
+            value: 130,
+            min: 1,
+            max: 500
+        });
+        $(".slider-sample3").slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [ 40, 170 ],
+        });
+
+
+
+        // jQuery Flot Chart
+        var visits = [[1, 50], [2, 40], [3, 45], [4, 23],[5, 55],[6, 65],[7, 61],[8, 70],[9, 65],[10, 75],[11, 57],[12, 59]];
+        var visitors = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47],[8, 55],[9, 43],[10,50],[11,47],[12, 39]];
+
+        var plot = $.plot($("#statsChart"),
+            [ { data: visits, label: "注册量"},
+                { data: visitors, label: "访客量" }], {
+                series: {
+                    lines: { show: true,
+                        lineWidth: 1,
+                        fill: true,
+                        fillColor: { colors: [ { opacity: 0.1 }, { opacity: 0.13 } ] }
+                    },
+                    points: { show: true,
+                        lineWidth: 2,
+                        radius: 3
+                    },
+                    shadowSize: 0,
+                    stack: true
+                },
+                grid: { hoverable: true,
+                    clickable: true,
+                    tickColor: "#f9f9f9",
+                    borderWidth: 0
+                },
+                legend: {
+                    // show: false
+                    labelBoxBorderColor: "#fff"
+                },
+                colors: ["#a7b5c5", "#30a0eb"],
+                xaxis: {
+                    ticks: [[1, "一月"], [2, "二月"], [3, "三月"], [4,"四月"], [5,"五月"], [6,"六月"],
+                        [7,"七月"], [8,"八月"], [9,"九月"], [10,"十月"], [11,"十一月"], [12,"十二月"]],
+                    font: {
+                        size: 12,
+                        family: "Open Sans, Arial",
+                        variant: "small-caps",
+                        color: "#697695"
+                    }
+                },
+                yaxis: {
+                    ticks:3,
+                    tickDecimals: 0,
+                    font: {size:12, color: "#9da3a9"}
+                }
+            });
+
+        function showTooltip(x, y, contents) {
+            $('<div id="tooltip">' + contents + '</div>').css( {
+                position: 'absolute',
+                display: 'none',
+                top: y - 30,
+                left: x - 50,
+                color: "#fff",
+                padding: '2px 5px',
+                'border-radius': '6px',
+                'background-color': '#000',
+                opacity: 0.80
+            }).appendTo("body").fadeIn(200);
+        }
+
+        var previousPoint = null;
+        $("#statsChart").bind("plothover", function (event, pos, item) {
+            if (item) {
+                if (previousPoint != item.dataIndex) {
+                    previousPoint = item.dataIndex;
+
+                    $("#tooltip").remove();
+                    var x = item.datapoint[0].toFixed(0),
+                        y = item.datapoint[1].toFixed(0);
+
+                    var month = item.series.xaxis.ticks[item.dataIndex].label;
+
+                    showTooltip(item.pageX, item.pageY,
+                        item.series.label + " of " + month + ": " + y);
+                }
+            }
+            else {
+                $("#tooltip").remove();
+                previousPoint = null;
+            }
+        });
+    });
+JS;
+$this->registerJs($js)
+?>
 
 
 

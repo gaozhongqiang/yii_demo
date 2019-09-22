@@ -7,6 +7,7 @@
  * 商品分类
  */
 namespace app\models;
+use yii\data\Pagination;
 use yii\db\ActiveRecord;
 
 class Category extends ActiveRecord{
@@ -17,32 +18,29 @@ class Category extends ActiveRecord{
     public function attributeLabels()
     {
         return [
-            'title' => '分类',
-            'parentid' => '父级id'
+            'title' => '分类名称',
+            'parentid' => '上级分类'
         ];
     }
     public function rules()
     {
         return [
-            ['parentid', 'validateParentid', 'message' => '上级分类不存在'],
+            ['parentid', 'required', 'message' => '上级分类不存在','except' => 'rename'],
             ['title', 'required', 'message' => '标题名称不能为空'],
             ['createtime', 'safe']
         ];
     }
     public function add($data){
-        if($this->load($data) && $this->validate()){
-            $this->createtime = time();
-            if($this->save()){
-                return true;
-            }
-            return false;
+        $data['Category']['createtime'] = time();
+        if($this->load($data) && $this->save()){
+            return true;
         }
         return false;
     }
     //判断父级id是否存在
     public function validateParentid(){
         if(!empty($this->parentid)){
-            $data = self::find()->where('cateid = :id and del = 0',[':id'=>$this->parentid])->one();
+            $data = self::find()->where('cateid = :id',[':id'=>$this->parentid])->one();
             if(empty($data)){
                 $this->addError('parentid','父级id不存在');
             }
@@ -56,7 +54,7 @@ class Category extends ActiveRecord{
     }
     //获取全部数据
     public function getData(){
-        return self::find()->where('del = 0')->asArray()->all();
+        return self::find()->asArray()->all();
     }
     //父级数据遍历
     public function getTree($data,$pid = 0){
@@ -102,5 +100,55 @@ class Category extends ActiveRecord{
         }
         return $options;
     }
+    public static function getMenu(){
+        $top = self::find()->where("parentid = :pid",[':pid' => 0])->asArray()->all();
+        $data = [];
+        foreach ($top as $key => $cate){
+            $cate['children'] = self::find()->where('parentid = :pid',[':pid'=>$cate['cateid']])->asArray()->all();
+            $data[$key] = $cate;
+        }
+        return $data;
+    }
+    /**
+     * 查询顶级分类
+     * */
+    public function getPrimaryCate(){
+        $data = self::find()->where('parentid = :pid',[':pid' => 0]);
+        if(empty($data)){
+            return [];
+        }
+        $pager = new Pagination(['totalCount' => $data->count(),'pageSize' => 10]);
+        $data = $data->orderBy('createtime desc')->offset($pager->offset)->limit($pager->limit)->all();
+        if(empty($data)){
+            return [];
+        }
+        $primary = [];
+        foreach ($data as $cate){
+            $primary[] = [
+              'id' => $cate->cateid,
+              'text' => $cate->title,
+              'children' => $this->getChild($cate->cateid)
+            ];
+        }
+        return ['data' => $primary,'pager' => $pager];
+    }
 
+    /**
+     * @param $cateid
+     */
+    public function getchild($cateid){
+        $data = self::find()->where('parentid = :pid',[':pid' => $cateid])->all();
+        if(empty($data)){
+            return [];
+        }
+        $children = [];
+        foreach ($data as $child){
+            $children[] = [
+                'id' => $child->cateid,
+                'text' => $child->title,
+                'children' => $this->getchild($child->cateid)
+            ];
+        }
+        return $children;
+    }
 }

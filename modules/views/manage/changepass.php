@@ -27,9 +27,9 @@
         ],
     ]);
 ?>
-<?php echo $form->field($model, 'admin_user')->textInput(['class' => 'span9', 'disabled' => true]); ?>
-<?php echo $form->field($model, 'admin_pass')->passwordInput(['class' => 'span9']); ?>
-<?php echo $form->field($model, 'admin_repass')->passwordInput(['class' => 'span9']); ?>
+<?php echo $form->field($model, 'adminuser')->textInput(['class' => 'span9', 'disabled' => true]); ?>
+<?php echo $form->field($model, 'adminpass')->passwordInput(['class' => 'span9']); ?>
+<?php echo $form->field($model, 'repass')->passwordInput(['class' => 'span9']); ?>
 <div class="span11 field-box actions">
     <?php echo Html::submitButton('修改', ['class' => 'btn-glow primary']); ?>
     <span>或者</span>

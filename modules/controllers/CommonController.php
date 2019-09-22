@@ -8,7 +8,7 @@
  */
 namespace app\modules\controllers;
 use yii\web\Controller;
-use yii;
+use Yii;
 class CommonController extends Controller{
     public function init()
     {
@@ -25,13 +25,13 @@ class CommonController extends Controller{
         return Yii::$app->session['admin'][$key];
     }
     //get获取值
-    public function method_get_value($key_name = '',$is_num = 0){
+    public function method_get_value($key_name = '',$is_num = 0,$default = 0){
         if(empty($key_name)){
             return Yii::$app->request->get();
         }
-        $data = Yii::$app->request->get($key_name);
+        $data = Yii::$app->request->get($key_name,$default);
         if(empty($is_num)){
-            return preg_match("/^\s+|\s+$/","",filter_input_value($data));
+            return preg_replace("/^\s+|\s+$/","",filter_input_value($data));
         }
         return intval($data);
     }
@@ -44,11 +44,11 @@ class CommonController extends Controller{
         if(empty($is_num)){
             if(is_array($data)){
                 foreach ($data as $key => $value){
-                    $data[$key] =  preg_match("/^\s+|\s+$/","",filter_input_value($value));
+                    $data[$key] =  preg_replace("/^\s+|\s+$/","",filter_input_value($value));
                 }
                 return $data;
             }else{
-                return preg_match("/^\s+|\s+$/","",filter_input_value($data));
+                return preg_replace("/^\s+|\s+$/","",filter_input_value($data));
             }
         }
         if(is_array($data)){

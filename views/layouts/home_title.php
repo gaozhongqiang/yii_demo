@@ -1,5 +1,9 @@
 <?php
 use app\assets\AppAsset;
+use yii\bootstrap\NavBar;
+use yii\bootstrap\Nav;
+use yii\helpers\Html;
+
 AppAsset::register($this);
 ?>
 <?php
@@ -27,32 +31,50 @@ $this->beginPage();
     $this->head();
     ?>
 
-
-
 </head>
 <body>
 <?php $this->beginBody();?>
 <div class="wrapper">
     <!-- ============================================================= TOP NAVIGATION ============================================================= -->
-    <nav class="top-bar animate-dropdown">
-        <div class="container">
-            <div class="col-xs-12 col-sm-6 no-margin">
-                <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="category-grid.html">所有分类</a></li>
-                    <li><a href="cart.html">我的购物车</a></li>
-                    <li><a href="orders.html">我的订单</a></li>
-                </ul>
-            </div><!-- /.col -->
+    <?php
+    NavBar::begin([
+            'options' => [
+                    'class' => 'top-bar animate-dropdown'
+            ]
+    ]);
+    echo Nav::widget([
+            'options' => [
+                    'class' => 'navbar-nav navbar-left'
+            ],
+            'items' => [
+                    ['label' => '首页', 'url' => ['/index/index']],
+                    \Yii::$app->session['isLogin'] == 1 ? (
+                            ['label' => '我的购物车', 'url' => ['/cart/index']]
+                    ) : '',
+                    \Yii::$app->session['isLogin'] == 1 ? (
+                            ['label' => '我的订单', 'url' => ['/order/index']]
+                    ) : '',
+            ]
+    ]);
+    echo Nav::widget([
+        'options' => [
+            'class' => 'navbar-nav navbar-right'
+        ],
+        'items' => [
+            \Yii::$app->session['isLogin'] != 1 ? (
+            ['label' => '注册', 'url' => ['/member/auth']]
+            ) : '',
+            \Yii::$app->session['isLogin'] != 1 ? (
+            ['label' => '登录', 'url' => ['/member/auth']]
+            ) : '',
+            \Yii::$app->session['isLogin'] == 1 ? (
+            ['label' => '欢迎您回来'.\Yii::$app->session['username'].'&nbsp;'.Html::a('退出',['/member/logout']), 'url' => ['/member/auth']]
+            ) : '',
+        ]
+    ]);
+    NavBar::end();
+    ?>
 
-            <div class="col-xs-12 col-sm-6 no-margin">
-                <ul class="right">
-                    <li><a href="authentication.html">注册</a></li>
-                    <li><a href="authentication.html">登录</a></li>
-                </ul>
-            </div><!-- /.col -->
-        </div><!-- /.container -->
-    </nav><!-- /.top-bar -->
     <!-- ============================================================= TOP NAVIGATION : END ============================================================= -->		<!-- ============================================================= HEADER ============================================================= -->
     <header>
         <div class="container no-padding">

@@ -1,6 +1,7 @@
+<?php $this->title = '会员列表';?>
 <link rel="stylesheet" href="assets/admin/css/compiled/user-list.css" type="text/css" media="screen" />
 <!-- main container -->
-<div class="content">
+
 
     <div class="container-fluid">
         <div id="pad-wrapper" class="users-list">
@@ -92,5 +93,5 @@
             <!-- end users table -->
         </div>
     </div>
-</div>
+
 <!-- end main container -->

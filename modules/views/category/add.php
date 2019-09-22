@@ -1,9 +1,15 @@
 <?php
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+$this->title = '分类管理';
+$this->params['breadcrumbs'] = [
+        [
+            'label' => '分类管理',
+            'url' => ['/admin/category/list']
+        ]
+];
 ?>
 <!-- main container -->
-<div class="content">
     <div class="container-fluid">
         <div id="pad-wrapper" class="new-user">
             <div class="row-fluid header">
