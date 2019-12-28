@@ -35,8 +35,8 @@ use yii\helpers\Html;
                                 'action' => ['member/auth']
                             ]
                         );
-                        $form->field($model,'loginname')->textInput(['class' => 'le-input']);
-                        $form->field($model,'userpass')->textInput(['class' => 'le-input']);
+                        echo $form->field($model,'loginname')->textInput(['class' => 'le-input']);
+                        echo $form->field($model,'userpass')->textInput(['class' => 'le-input']);
                         ?>
 
                             <div class="field-row clearfix">
@@ -45,7 +45,7 @@ use yii\helpers\Html;
                                 $form->field($model,'rememberMe')->checkbox([
                                         'template' =>'\'<span class="pull-left"><label class="content-color">{input} <span class="bold">记住我</span></label></span>',
                                         'class' => 'le-checkbox auto-width inline'
-                                ])
+                                ]);
                                 ?>
                         	</span>
                                 <span class="pull-right">
@@ -80,7 +80,7 @@ use yii\helpers\Html;
                                 'action' => ['member/reg']
 
                         ]);
-                        $form->field($model,'useremail')->textInput(['class' => 'le-input']);
+                        echo $form->field($model,'useremail')->textInput(['class' => 'le-input']);
                         ?>
 
                             <div class="buttons-holder">

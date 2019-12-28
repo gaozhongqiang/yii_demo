@@ -3,8 +3,9 @@
 namespace app\modules\models;
 use yii\db\ActiveRecord;
 use Yii;
+use yii\web\IdentityInterface;
 
-class Admin extends ActiveRecord
+class Admin extends ActiveRecord implements IdentityInterface
 {
     public $rememberMe = true;
     public $repass;
@@ -43,6 +44,7 @@ class Admin extends ActiveRecord
     public function validatePass()
     {
         if (!$this->hasErrors()) {
+            $this->adminpass = Yii::$app->getSecurity()->validatePassword();
             $data = self::find()->where('adminuser = :user and adminpass = :pass', [":user" => $this->adminuser, ":pass" => md5($this->adminpass)])->one();
             if (is_null($data)) {
                 $this->addError("adminpass", "用户名或者密码错误");
@@ -59,12 +61,15 @@ class Admin extends ActiveRecord
             }
         }
     }
-
+    public function getAdmin(){
+        return self::find()->where('adminuser = :user',[':user' => $this->adminuser])->one();
+    }
     public function login($data)
     {
         $this->scenario = "login";
         if ($this->load($data) && $this->validate()) {
-            if(!$_SESSION){
+            return Yii::$app->admin->login($this->getAdmin(),$this->rememberMe ? 24*3600 : 0);
+            /*if(!$_SESSION){
                 $lifetime = $this->rememberMe ? 24*3600 : 0;
                 session_set_cookie_params($lifetime);
             }
@@ -74,7 +79,7 @@ class Admin extends ActiveRecord
                 'isLogin' => 1,
             ];
             $this->updateAll(['logintime' => time(), 'loginip' => ip2long(Yii::$app->request->userIP)], 'adminuser = :user', [':user' => $this->adminuser]);
-            return (bool)$session['admin']['isLogin'];
+            return (bool)$session['admin']['isLogin'];*/
         }
         return false;
     }
@@ -133,7 +138,26 @@ class Admin extends ActiveRecord
         }
         return false;
     }
-
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return null;
+    }
+    public function getId()
+    {
+       return $this->adminid;
+    }
+    public function getAuthKey()
+    {
+        return '';
+    }
+    public function validateAuthKey($authKey)
+    {
+        return true;
+    }
 
 
 }

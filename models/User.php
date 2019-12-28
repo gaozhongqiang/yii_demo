@@ -4,7 +4,7 @@ namespace app\models;
 use yii\db\ActiveRecord;
 use Yii;
 
-class User extends ActiveRecord
+class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
     public $repass;
     public $loginname;
@@ -18,10 +18,10 @@ class User extends ActiveRecord
     {
         return [
             ['loginname', 'required', 'message' => '登录用户名不能为空', 'on' => ['login']],
-            ['openid', 'required', 'message' => 'openid不能为空', 'on' => [/*'reg',*/ 'regbymail', 'qqreg']],
-            ['username', 'required', 'message' => '用户名不能为空', 'on' => ['reg', 'regbymail', 'qqreg']],
-            ['openid', 'unique', 'message' => 'openid已经被注册', 'on' => [/*'reg',*/ 'regbymail', 'qqreg']],
-            ['username', 'unique', 'message' => '用户已经被注册', 'on' => ['reg', 'regbymail', 'qqreg']],
+            ['openid', 'required', 'message' => 'openid不能为空', 'on' => [/*'reg',*/ /*'regbymail',*/ 'qqreg']],
+            ['username', 'required', 'message' => '用户名不能为空', 'on' => ['reg', /*'regbymail',*/ 'qqreg']],
+            ['openid', 'unique', 'message' => 'openid已经被注册', 'on' => [/*'reg',*/ /*'regbymail',*/ 'qqreg']],
+            ['username', 'unique', 'message' => '用户已经被注册', 'on' => ['reg', /*'regbymail',*/ 'qqreg']],
             ['useremail', 'required', 'message' => '电子邮件不能为空', 'on' => ['reg', 'regbymail']],
             ['useremail', 'email', 'message' => '电子邮件格式不正确', 'on' => ['reg', 'regbymail']],
             ['useremail', 'unique', 'message' => '电子邮件已被注册', 'on' => ['reg', 'regbymail']],
@@ -39,7 +39,7 @@ class User extends ActiveRecord
             if (preg_match('/@/', $this->loginname)) {
                 $loginname = "useremail";
             }
-            $data = self::find()->where($loginname.' = :loginname and userpass = :pass', [':loginname' => $this->loginname, ':pass' => md5($this->userpass)])->one();
+            $data = self::find()->where($loginname.' = :loginname and userpass = :pass', [':loginname' => $this->loginname, ':pass' => $this->userpass])->one();
             if (is_null($data)) {
                 $this->addError("userpass", "用户名或者密码错误");
             }
@@ -75,18 +75,14 @@ class User extends ActiveRecord
     {
         return $this->hasOne(Profile::className(), ['userid' => 'userid']);
     }
-
+    public function getUser(){
+        return self::find()->where('username = :loginname or useremail = :loginname',[':loginname' => $this->loginname])->one();
+    }
     public function login($data)
     {
         $this->scenario = "login";
         if ($this->load($data) && $this->validate()) {
-            //做点有意义的事
-            $lifetime = $this->rememberMe ? 24*3600 : 0;
-            $session = Yii::$app->session;
-            session_set_cookie_params($lifetime);
-            $session['loginName'] = $this->loginname;
-            $session['isLogin'] = 1;
-            return (bool)$session['isLogin'];
+            return Yii::$app->user->login($this->getUser(),$this->rememberMe ? 24*3600 : 0);
         }
         return false;
     }
@@ -107,5 +103,23 @@ class User extends ActiveRecord
         }
         return false;
     }
-
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return null;
+    }
+    public function getId(){
+        return $this->userid;
+    }
+    public function getAuthKey()
+    {
+       return '';
+    }
+    public function validateAuthKey($authKey)
+    {
+        return true;
+    }
 }

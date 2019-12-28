@@ -13,6 +13,13 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager'
+            //auth_item (role permission)
+            //auth_item_child (role->permission)
+            //auth_assignment (user->role)
+            //auth_rule (rule)
+        ],
         'assetManager' =>[
             'class' => 'yii\web\AssetManager',
             'bundles' => [
@@ -43,6 +50,18 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'idParam' => '__user',
+            'identityCookie' => ['name' => '__user_identity','httpOnly' => true],
+            'loginUrl' =>['member/auth']//默认登陆地址
+        ],
+        //后台配置
+        'admin' => [
+            'class' =>'yii\web\User',
+            'identityClass' => 'app\modules\models\Admin',
+            'idParam' => '__admin',
+            'identityCookie' => ['name' => '__admin_identity','httpOnly' => true],
+            'enableAutoLogin' => true,
+            'loginUrl' =>['admin/public/login']//默认登陆地址
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

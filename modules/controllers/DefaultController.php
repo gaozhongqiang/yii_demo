@@ -8,6 +8,7 @@
  */
 namespace app\modules\controllers;
 class DefaultController extends CommonController{
+    protected $except = ['index'];
     public function actionIndex(){
         $this->layout = 'common';
         return $this->render('index');

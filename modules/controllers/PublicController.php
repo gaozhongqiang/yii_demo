@@ -11,7 +11,8 @@ use app\modules\models\Admin;
 use Yii;
 use yii\web\Controller;
 
-class PublicController extends Controller {
+class PublicController extends CommonController {
+    protected $except = ['login'];
     //登陆
     public function actionLogin(){
         $this->layout = false;

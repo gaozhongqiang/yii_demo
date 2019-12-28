@@ -10,12 +10,39 @@ namespace app\modules\controllers;
 use yii\web\Controller;
 use Yii;
 class CommonController extends Controller{
+    protected $actions = [];
+    protected $except = [];
+    protected $mustlogin = [];
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'user' => 'admin',
+                'only' => $this->actions,
+                'except' => $this->except,
+                'rules' => [
+                    [
+                        'allow' => false,
+                        'actions' => $this->mustlogin,
+                        'roles' => ['?']
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => $this->mustlogin,
+                        'roles' => ['@']
+                    ]
+                ]
+            ]
+        ];
+    }
+
     public function init()
     {
         $this->layout = 'common';
-        if($this->get_admin_session('isLogin') != 1){
+        /*if($this->get_admin_session('isLogin') != 1){
             $this->redirect(['/default/index']);
-        }
+        }*/
     }
     public function set_flash_session($key,$value){
         Yii::$app->session->setFlash($key,$value);

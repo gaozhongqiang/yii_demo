@@ -48,10 +48,10 @@ $this->beginPage();
             ],
             'items' => [
                     ['label' => '首页', 'url' => ['/index/index']],
-                    \Yii::$app->session['isLogin'] == 1 ? (
+                    \Yii::$app->user->isGuest ? (
                             ['label' => '我的购物车', 'url' => ['/cart/index']]
                     ) : '',
-                    \Yii::$app->session['isLogin'] == 1 ? (
+                    \Yii::$app->user->isGuest ? (
                             ['label' => '我的订单', 'url' => ['/order/index']]
                     ) : '',
             ]
@@ -61,15 +61,18 @@ $this->beginPage();
             'class' => 'navbar-nav navbar-right'
         ],
         'items' => [
-            \Yii::$app->session['isLogin'] != 1 ? (
+            \Yii::$app->user->isGuest ? (
             ['label' => '注册', 'url' => ['/member/auth']]
             ) : '',
-            \Yii::$app->session['isLogin'] != 1 ? (
+            \Yii::$app->user->isGuest ? (
             ['label' => '登录', 'url' => ['/member/auth']]
             ) : '',
-            \Yii::$app->session['isLogin'] == 1 ? (
-            ['label' => '欢迎您回来'.\Yii::$app->session['username'].'&nbsp;'.Html::a('退出',['/member/logout']), 'url' => ['/member/auth']]
+            !\Yii::$app->user->isGuest ? (
+            ['label' =>
+                ('欢迎您回来'.\Yii::$app->user->identity->username)]
             ) : '',
+            \Yii::$app->user->isGuest ? '' :[
+                    'label' => '退出','url' =>['/member/logout']]
         ]
     ]);
     NavBar::end();

@@ -18,6 +18,30 @@ use Yii;
 use yii\db\Exception;
 
 class OrderController extends CommonController {
+    //所有方法执行前认证
+    public function behaviors()
+    {
+        return [
+            'access' =>[//访问认证
+                'class' => \yii\filters\AccessControl::className(),
+                'only' =>['*'],//对哪些方法有效
+                'except' => [],//不允许访问的方法
+                'rules' => [//访问规则
+                    [
+                        'allow' => false,//不允许访问
+                        'actions' => ['index','check'],
+                        'roles' => ['?']//规则 guest ===》 ？  未登录用户
+                    ],
+                    [
+                        'allow' => true,//不允许访问
+                        'actions' => ['index','check'],
+                        'roles' => ['@']//规则 guest ===》 @  登录用户
+                    ],
+                ]
+            ]
+        ];
+    }
+
     //订单首页
     public function actionIndex(){
         $this->layout = 'layout2';

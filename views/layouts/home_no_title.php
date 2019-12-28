@@ -1,5 +1,8 @@
 <?php
 use app\assets\AppAsset;
+use yii\bootstrap\NavBar;
+use yii\helpers\Html;
+
 AppAsset::register($this);
 ?>
 <?php
@@ -52,6 +55,34 @@ $this->beginPage();
             </div><!-- /.col -->
         </div><!-- /.container -->
     </nav><!-- /.top-bar -->
+    <?php
+    NavBar::begin([
+        'options' =>[
+            'class' => 'top-bar animate-dropdown'
+        ]
+    ]);
+    echo NavBar::widget([
+        'options' => [
+            'class' => 'col-xs-12 col-sm-6 no-margin'
+        ],
+        'items' => [
+                ['label' => '首页','url' => ['/index/index']],
+                !\Yii::$app->user->isGuest ? ['label' => '我的购物车','url' => ['/cart/index']] : '',
+                !\Yii::$app->user->isGuest ? ['label' => '我的订单','url' => ['/order/index']] : '',
+        ]
+    ]);
+    echo NavBar::widget([
+            'options' => [
+                    'class' => 'col-xs-12 col-sm-6 no-margin'
+            ],
+            'items' => [
+                \Yii::$app->user->isGuest ? ['label' => '注册','url' => ['/member/auth']] : '',
+                \Yii::$app->user->isGuest ? ['label' => '登录','url' => ['/member/auth']] : '',
+                !\Yii::$app->user->isGuest ? ['label' => ('欢迎回来'.\Yii::$app->session['username'].
+                    Html::a('退出',['/member/logout']))] : ''
+            ]
+    ])
+    ?>
     <!-- ============================================================= TOP NAVIGATION : END ============================================================= -->		<!-- ============================================================= HEADER ============================================================= -->
     <header>
         <div class="container no-padding">
